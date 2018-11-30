@@ -107,7 +107,8 @@ function test_stdout_exit {
         echo "Test exit status failed: $1"
         echo "Actual exit status: $exit_status"
         echo "Expected exit status: $expected_exit_status"
-    fi 
+    fi
+    coverage run ${1/$test_program/$(which $test_program)} 
 }
 
 # Run a command and check that the exit status is 
@@ -129,7 +130,8 @@ function test_exit_status {
         echo "Test exit status failed: $1"
         echo "Actual exit status: $exit_status"
         echo "Expected exit status: $expected_exit_status"
-    fi 
+    fi
+    coverage run ${1/$test_program/$(which $test_program)} 
 }
 
 
