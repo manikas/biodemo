@@ -23,17 +23,12 @@ num_tests=0
 
 function show_help {
 cat << UsageMessage
-
 ${this_program_name}: run integration/regression tests for biodemo 
-
 Usage:
     ${this_program_name} [-h] [-v] -p program -d test_data_dir 
-
 Example:
     ${this_program_name} -p bin/biodemo -d data/tests
-
 -h shows this help message
-
 -v verbose output
 UsageMessage
 }
@@ -147,6 +142,7 @@ test_stdout_exit "$test_program one_sequence.fasta" one_sequence.fasta.expected 
 test_stdout_exit "$test_program two_sequence.fasta" two_sequence.fasta.expected 0
 test_stdout_exit "$test_program --minlen 200 two_sequence.fasta" two_sequence.fasta.minlen_200.expected 0
 test_stdout_exit "$test_program --minlen 200 < two_sequence.fasta" two_sequence.fasta.minlen_200.stdin.expected 0
+test_stdout_exit "$test_program --maxlen 200 < two_sequence.fasta" two_sequence.fasta.maxlen_200.stdin.expected 0
 test_stdout_exit "$test_program --maxlen 200 < two_sequence.fasta" two_sequence.fasta.maxlen_200.stdin.expected 0
 test_stdout_exit "$test_program empty_file" empty_file.expected 0
 # Test when --minlen filters out ALL sequences (empty result)
